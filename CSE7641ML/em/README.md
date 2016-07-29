@@ -9,3 +9,4 @@ Index :
 - mycluster.m : Implements the EM algorithm.
 - AccMeasure.m : Computes an evaluation function.
 - homework2.m : Main program.
+- data.mat : dataset. The data contains a 400*101 matrix called X, in which the last column is the true label to help evaluate the algorithm.
