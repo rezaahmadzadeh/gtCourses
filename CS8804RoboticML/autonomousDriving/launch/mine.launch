@@ -1,0 +1,55 @@
+<launch>
+  <node pkg="vrep_vsv_driver" type="vrep_vsv_driver" name="vrep_vsv_driver" output="screen">
+      <param name="world_frame_" value="/world" /> 
+      <param name="pan_frame_" value="/VSV/ArmPan" />  
+      <param name="tilt_frame_" value="/VSV/ArmTilt" />    
+      <param name="ground_frame_" value="/VSV/ground" />   
+      <param name="base_frame_" value="/VSV/base" />
+
+      <param name="autorepeat_rate" value="60" type="double"/>
+
+      <param name="min_z" value="0.01"/>
+      <param name="max_z" value="0.02"/>
+      <param name="min_y" value="-0.5"/>
+      <param name="max_y" value="0.0"/>
+      <param name="delta" value="0.005"/>
+
+      <param name="max_range_" value="4.0" />
+      <param name="CN" value="100" />
+      <param name="L" value="100" />
+      <param name="threshold" value="0.01" />
+      <param name="world_size" value="25" />
+
+      <param name="min_points" value="10" />
+      <param name="min_points_line" value="7" />
+      <param name="look_ahead_x" value="4.5" />
+      <param name="contour_height" value="0.012" />
+      <param name="L_contour" value="20" />
+
+      <param name="n_samples" value="100" />
+      <param name="tolerance" value="0.2" />
+
+      <param name="y_stat" value="3.0" />
+      <param name="velocity" value="0.80" />
+      <param name="k1" value="1.0" />
+      <param name="k2" value="1.0" />
+
+      <remap from="/vrep_vsv_driver/target_pose"
+          to="/arm_ik/target_pose"/>
+
+            <remap from="/vrep_vsv_driver/control_truck"
+           to="/vsv_driver/control_truck"/>
+  </node>
+
+    <node pkg="vrep_vsv_driver" type="vsv_arm_ik.py" name="arm_ik" output="screen">
+      <param name="vsv_name" value="VSV"/>
+      <param name="max_velocity" value="0.5"/>
+      <remap from="/arm_ik/joint_command" to="/VSV/aggregated/command"/>
+      <remap from="/arm_ik/joint_state" to="/VSV/aggregated/state"/>
+  </node>
+
+    <node pkg="vrep_vsv_driver" type="vsv_driver.py" name="vsv_driver" output="screen">
+      <param name="vsv_name" value="VSV"/>
+      <param name="min_radius" value="5.0"/>
+  </node>
+</launch>
