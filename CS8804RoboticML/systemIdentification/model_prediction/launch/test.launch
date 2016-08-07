@@ -1,0 +1,18 @@
+<launch>
+    <node pkg="model_prediction" type="generator.py" name="generator" output="screen" />
+
+    <node pkg="model_prediction" type="model_prediction.py" name="predictor" output="screen" >
+        <param name="trigger" value="command"/>
+        <param name="command_type" value="geometry_msgs/Twist"/>
+        <param name="command_field" value="linear.x"/>
+        <param name="command_coef_csv" value="0.3394"/>
+        <param name="state_type" value="geometry_msg/Twist"/>
+        <param name="state_field" value="linear.x"/>
+        <param name="state_coef_csv" value="1,-0.6728"/>
+
+        <remap from="/vrep/twistCommand" to="/command"/>
+        <remap from="/vrep/twistStatus" to="/state"/>
+    </node>
+
+</launch>
+
