@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<launch>
+
+    
+    <node respawn="true" pkg="joy" type="joy_node" name="joy" >
+    <param name="dev" type="string" value="/dev/input/js0" />
+    <param name="deadzone" value="0.12" />
+</node>
+
+ <!-- Axes -->
+  <node pkg="learning_joy2" type="vrep_teleop_joy.py" name="teleop">
+ 	 <param name="axis_linear" value="1" type="int"/>
+ 	 <param name="axis_angular" value="0" type="int"/>
+	  <param name="scale_linear" value="2" type="double"/>
+	  <param name="scale_angular" value="0" type="double"/>
+ 	 <param name="autorepeat_rate" value="60" type="double"/>
+ </node>
+
+  <node pkg="floor_plane_filter" type="floor_plane_filter" name="floor_plane_filter" output="screen"> 
+      launch-prefix="xterm -e gdb --args"
+      <param name="base_frame" value="/bubbleRob" />
+      <param name="world_frame" value="/world" />
+      <param name="max_range_" value="5.0" />
+      <param name="CN" value="100" />
+      <param name="L" value="100" />
+      <param name="up_bound" value="0.55" />
+      <param name="low_bound" value="-0.1" />
+      <param name="sigma_max" value="0.0" />
+      <param name="sigma_min" value="1.0" />
+      <param name="maxObSize" value="100" />
+      <param name="minObSize" value="100" />  
+      <param name="a" value="1.0" />
+      <param name="r" value="0.01" />
+      <param name="q" value="0.017261407" />
+      <param name="bel0" value="0.5" />
+      
+      <remap from="/floor_plane_filter/scans" to="/vrep/depthSensor"/>
+
+ </node>
+
+    </launch>

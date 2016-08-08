@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<launch>
+    <include file="$(find vrep_ros_teleop)/launch/teleop_mux.launch"/>
+    <node name="task_server" pkg="floor_nav" type="task_server" output="screen" >
+        <!-- After install -->
+        <!-- <param name="lib_path" value="$(find floor_nav)/tasks"/> -->
+        <!-- While developing -->
+        <param name="lib_path" value="$(find floor_nav)/../../devel/share/floor_nav/tasks"/>
+        <param name="base_frame" value="/bubbleRob"/>
+        <param name="reference_frame" value="/bubbleRob"/>
+    </node>
+    <node name="viz_graph" pkg="floor_graph" type="viz_graph.py" output="screen">
+    </node>
+
+  <node pkg="floor_plane_filter" type="floor_plane_filter" name="floor_plane_filter" output="screen"> 
+      launch-prefix="xterm -e gdb --args"
+      <param name="base_frame" value="/bubbleRob" />
+      <param name="world_frame" value="/world" />
+      <param name="max_range_" value="5.0" />
+      <param name="CN" value="100" />
+      <param name="L" value="100" />
+      <param name="up_bound" value="0.55" />
+      <param name="low_bound" value="-0.1" />
+      <param name="sigma_max" value="0.0" />
+      <param name="sigma_min" value="169600.0" />
+      <param name="maxObSize" value="169800" />
+      <param name="minObSize" value="100" />  
+      <param name="a" value="1.0" />
+      <param name="r" value="0.01" />
+      <param name="q" value="0.017261407" />
+      <param name="bel0" value="0.5" />
+      
+      <remap from="/floor_plane_filter/scans" to="/vrep/depthSensor"/>
+ </node>
+
+     <node pkg="floor_mapping_b" type="floor_mapping_b" name="floor_mapping_b" output="screen">
+      launch-prefix="xterm -e gdb --args"
+      <param name="base_frame" value="/bubbleRob" />
+      <param name="world_frame" value="/world" />
+      <param name="max_range" value="3.5" />
+      <param name="CN" value="100" />
+      <param name="angle" value="0.30" />
+      <param name="xz" value="0.8" />
+      <param name="xxt" value="0.9" />
+      <param name="nb_min" value="5" />
+      <param name="ransac_n_iteration" value ="1000"/>
+      <param name="ransac_tolerance" value ="0.5"/>
+      
+      <remap from="/floor_mapping_b/scans" to="/vrep/depthSensor"/>
+      <remap from="/floor_mapping_b/scans2" to="/floor_plane_regression/estimationTopic"/>
+  </node>
+
+
+
+</launch>
