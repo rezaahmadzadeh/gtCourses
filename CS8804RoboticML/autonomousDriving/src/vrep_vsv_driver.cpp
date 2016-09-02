@@ -136,7 +136,8 @@ class Demining {
                 Eigen::Vector2f AB; AB = B-A; AB = AB/AB.norm();
                 N << -AB[1], AB[0];
                 N = N/N.norm();
-
+				
+				//compute score
                 int S_temp = 0;
                 for(int i(0) ; i < n ; i++){
                     Eigen::Vector2f P; P << lastpc_[i].x, lastpc_[i].y;
@@ -145,7 +146,8 @@ class Demining {
                         S_temp++;
                     }
                 }
-
+				
+				// if better score, update parameters.
                 if(S_temp>S){
                     X[0] = N[0]; //b
                     X[1] = N[1]; //a
@@ -156,7 +158,6 @@ class Demining {
             }
 
             //normal vector visualization
-            
             visualization_msgs::Marker a;
             a.header.frame_id = world_frame_;
             a.header.stamp = ros::Time();
@@ -176,9 +177,7 @@ class Demining {
             a.points.push_back(end);
             marker_normalTangente.publish(a);
             
-
             //point on line visualization
-            
             visualization_msgs::Marker r;
             r.header.frame_id = world_frame_;
             r.header.stamp = ros::Time();
@@ -195,16 +194,20 @@ class Demining {
             origine.y = R[1];
             r.points.push_back(origine);
             marker_pointTangente.publish(r);
-                  
-            return std::pair<Eigen::Vector2f, Eigen::Vector2f>(X,R); //normal to the tangente
+            
+            //return estimated parameter:
+            // vector components of the tangente to the contour curve.
+            return std::pair<Eigen::Vector2f, Eigen::Vector2f>(X,R); 
         } 
 
 
         void control_callback(const sensor_msgs::PointCloud2ConstPtr msg){
+            
+            // Clean previous detected contour.
             line.clear();
             distance_map.clear();
 
-            /*height map defintion*/
+            // height map defintion
             pcl::PointCloud<pcl::PointXYZ> temp;
             pcl::fromROSMsg(*msg,temp);
             pcl::PointCloud<pcl::PointXYZ> worldpc;
@@ -248,7 +251,7 @@ class Demining {
                 }
             }
 
-            //image computation
+            //height map image computation
             for(size_t l =0; l< (unsigned int) CN; l++) {
                 for(size_t c =0; c<(unsigned int)CN; c++) {
                     if(height_ref(l,c,0) ==0) {
@@ -270,7 +273,6 @@ class Demining {
                 }
             }
 
-
             //height map visualization
             sensor_msgs::ImagePtr height_image_msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", height_image).toImageMsg();
             height_pub.publish(height_image_msg);  
@@ -281,7 +283,7 @@ class Demining {
             cv::Canny( height_image_gray, canny_output, 127, 255, 3 );
             cv::findContours( canny_output, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0) );
 
-            // contour filtering to get only green/brozn interface
+            // contour filtering to get only green/brown interface
             std::vector<std::pair<int, int> > cidx; 
             for(size_t i=0; i<contours.size(); i++){
                 for(size_t j=0; j<contours[i].size(); j++){
@@ -330,7 +332,7 @@ class Demining {
             filter_contour_pub.publish(filter_contour_image_msg);  
 
 
-            /* contour filtering to get only the relevant contour window*/
+            //contour filtering to get only the relevant contour window
 
             //define lookahead point
             geometry_msgs::PointStamped look_ahead;
@@ -372,6 +374,7 @@ class Demining {
                 distance_map.insert(std::pair<double,pcl::PointXYZ>(distance,pcl_p));
             }
             
+            // visualize look ahead point
             visualization_msgs::Marker points;
             points.header.frame_id = world_frame_;
             points.header.stamp = msg->header.stamp;
@@ -390,9 +393,11 @@ class Demining {
             if(distance_map.size() < (unsigned int) min_points) {
                 p_to_take = distance_map.size();
             }
-
+			
+			//if you have no point cloud
             if(distance_map.size() == 0) {
-                //if you have no points but have laser signal
+                //if you have laser signal: control navigation with laser only
+                // Happens at the beginning of the navigation
                 if (y_laser_input ==1) { 
                     y_laser_input = 0;
                     geometry_msgs::Twist t;
@@ -413,7 +418,7 @@ class Demining {
                 }
                 y_laser_input=0;
             }
-
+            // else if you have a point cloud 
             else {
                 std::map<double, pcl::PointXYZ>::iterator it = distance_map.begin();
                 for (int i=0; i<p_to_take; i++) {
@@ -428,8 +433,9 @@ class Demining {
 
                 //contour window visualization
                 marker_lineTangente.publish(points);             
-
                 
+                // If you have enough 3D points along the countour
+                // Estimate the tangente to the countour
                 if(line.size() == (unsigned int) min_points) { 
                     //get a vector orthogonal to the tangente and one point of it
                     std::pair<Eigen::Vector2f,Eigen::Vector2f> NR = line_ransac(line); 
@@ -446,11 +452,6 @@ class Demining {
                     B << la_world.point.x, la_world.point.y;
                     double y = y_stat - fabs((B-origin_line).dot(N));
 
-                    /*if (fabs(y)> distance_max) {
-                        distance_max = fabs(y);
-                        std::cout << "distance_max=" << distance_max << std::endl;
-                    }*/
-                
                     // compute angle difference computation
                     geometry_msgs::PointStamped rdrive_in, rdrive_out;
                     rdrive_in.point.x = 0.0;
@@ -470,11 +471,6 @@ class Demining {
                         theta_n = theta_n - M_PI;
                     }
                     double teta = remainder(theta_n -theta_v, M_PI);
-
-                    /*if (fabs(teta) > theta_max) {
-                        theta_max = fabs(teta);
-                        std::cout << "theta_max=" << theta_max << std::endl;
-                    }*/
 
                     geometry_msgs::Twist t;
                     t.linear.x = velocity;
@@ -509,6 +505,7 @@ class Demining {
 
 
         void laser_callback(const sensor_msgs::PointCloud2ConstPtr msg){
+        	// Project points from the laser frame to the pan frame.
             pcl::PointCloud<pcl::PointXYZ> temp;
             pcl::fromROSMsg(*msg,temp);  
             pcl::PointCloud<pcl::PointXYZ> worldpc;
@@ -518,7 +515,6 @@ class Demining {
             pcl::PointCloud<pcl::PointXYZ> panpc;
             listener_.waitForTransform(pan_frame_,msg->header.frame_id,msg->header.stamp,ros::Duration(1.0));
             pcl_ros::transformPointCloud(pan_frame_,msg->header.stamp, temp, msg->header.frame_id,  panpc, listener_);
-
 
             unsigned int n = temp.size();
             unsigned int i = 0;
@@ -534,7 +530,6 @@ class Demining {
                 tposMsg.z = panpc[i].z;
 
                 if((z > min_z) && (z < max_z) && (tposMsg.y < min_y) && (!interface_found) ) {  
-
                     //laser_found interface visualization
                     interface_found = true;
                     visualization_msgs::Marker points;
@@ -575,9 +570,10 @@ class Demining {
         }
 
 
-
+		// Metal detector control loop.
         void metal_callback(std_msgs::Float32 msg){
-
+        	// If the tool detected a mine
+        	// run an weghted average over all the registered positions for this mine.
             if(msg.data > (float) mine_threshold) {
                 //compute mine coordinate
                 geometry_msgs::PointStamped t_world, t_tool;
@@ -590,7 +586,6 @@ class Demining {
                 listener_.transformPoint(world_frame_,t_tool, t_world);
                 double x = t_world.point.x;
                 double y = t_world.point.y;
-
 
                 if (mine_xy.size() == 0) {
                     mine_xy.push_back(Mine(Coord(x,y),Val(msg.data,1)));
@@ -737,9 +732,7 @@ class Demining {
             height_ref = cv::Mat_<double>(3,sz); 
             height_ref = 0.0;
             rng(12345);
-
         }
-
 };
 
 
