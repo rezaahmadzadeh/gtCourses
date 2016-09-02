@@ -8,4 +8,4 @@ Application of machine learning algorithms to the following robotic problems:
 - GPS localization
 - Autonomous object detection and navigation
 
-All skeleton code is provided by Professor Cédric Pradalier(https://dream.georgiatech-metz.fr/)
+All skeleton code is provided by Professor Cédric Pradalier(dream.georgiatech-metz.fr/)
