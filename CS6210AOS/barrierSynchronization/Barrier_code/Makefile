@@ -14,7 +14,7 @@ MPILIBS =
 #MPICC = /opt/openmpi-1.4.3-gcc44/bin/mpicc
 MPICC = mpicc
 
-all: stour mcs tournament SRB SRT
+all: stour mcs tournament SRB_test SRT_test
 
 stour: stour.c
 	$(MPICC) $(OMPFLAGS) -o $@ $^ $(OMPLIBS)
@@ -25,10 +25,10 @@ tournament: tournament.c
 mcs: mcs.c
 	$(MPICC) -o $@ $(OMPFLAGS) $^ $(OMPLIBS)
 
-SRB: SRB.o
+SRB_test: SRB.o SRB_test.o SRB.h
 	$(CC) $(LDFLAGS) -o $@ $^ $(OMPLIBS)
 
-SRT: SRT.o
+SRT_test: SRT.o SRT_test.o SRT.h
 	$(CC) $(LDFLAGS) -o $@ $^ $(OMPLIBS)
 
 clean:
