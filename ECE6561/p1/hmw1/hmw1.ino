@@ -43,9 +43,9 @@ int currerror = 0;
 float ei = 0;
 
 // PID coefficients
-const float kp = 1; //proportional gain. how granular should the gains be? scaling necessary?
-const float ki = 0.0; //integral gain. 7
-const float kd = 0.0; //derivative gain 0.006
+const float kp = 3.0; //proportional gain. how granular should the gains be? scaling necessary?
+const float ki = 7; //integral gain. 7
+const float kd = 0.006; //derivative gain 0.006
 int ep = 0;
 float ed = 0;
  
@@ -158,8 +158,8 @@ void loop() {
     Serial.println(r);
     */
 
-	//digitalWrite(OUTDIR, HIGH); // counter clock wise when the encoder output is at the left
-	//analogWrite(OUTPWM, 0);
+	digitalWrite(OUTDIR, HIGH); // counter clock wise when the encoder output is at the left
+	analogWrite(OUTPWM, out);
   } 
 }
 
