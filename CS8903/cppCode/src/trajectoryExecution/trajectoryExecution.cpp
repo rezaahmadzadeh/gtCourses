@@ -1,7 +1,7 @@
-/* -------------------------------------
+/** -------------------------------------
  *  A Simple Trajectory Executer
- *
- *
+ * \fn trajectoryExecution.cpp
+ * \brief Reads joint configuration from TRAJECTORY_FILEANME and sends command to the robot.
  *
  * set singlePointTest for sending a single point to the module
  * set incrementalTest for sending points in an incremental loop
@@ -86,18 +86,17 @@ int main()
         usleep(3000);
         TrajectoryPoint trajectoryPoint;
 
-        //MyMoveHome(); //TODO Uncomment.
+        // MyMoveHome(); //TODO Uncomment if you want to start from this position at each test.
         usleep(10000);
         ifstream ifs;
-        std::cout << TRAJECTORY_FILENAME << std::endl;
         ifs.open(TRAJECTORY_FILENAME);
         if (!ifs.is_open())
             cout << "no such file! try again." << endl;
         int count=0;
-        float j1,j2,j3,j4,j5,j6,x,y,z,tx,ty,tz;
+        double j1,j2,j3,j4,j5,j6,x,y,z,tx,ty,tz;
         int iter=0;
 
-        while (ifs.is_open() &&  ifs >> j1 >> j2 >> j3 >> j4 >> j5 >> j6 && iter<ITER_MAX)
+        while (ifs.is_open() &&  ifs >> j1 >> j2 >> j3 >> j4 >> j5 >> j6 /*&& iter<ITER_MAX*/)
         {
             printf("%i\t%f\t%f\t%f\t%f\t%f\t%f\n", count,j1,j2,j3,j4,j5,j6);
             trajectoryPoint.InitStruct();
@@ -109,11 +108,10 @@ int main()
             trajectoryPoint.Position.Actuators.Actuator4 = j4*R2D;
             trajectoryPoint.Position.Actuators.Actuator5 = j5*R2D;
             trajectoryPoint.Position.Actuators.Actuator6 = j6*R2D;
-            //(*MySendBasicTrajectory)(trajectoryPoint); //TODO Uncomment
+            (*MySendBasicTrajectory)(trajectoryPoint);
             usleep(3000);
             count++;
             iter++;
-            //ifs >> j1;
         }
 
         ifs.close();

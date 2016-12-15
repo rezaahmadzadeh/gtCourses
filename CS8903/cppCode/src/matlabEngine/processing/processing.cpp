@@ -13,31 +13,21 @@
 
 
 int main() {
-	
-	Engine *ep;
-	/*
-	 * Call engOpen with a NULL string. This starts a MATLAB process 
-     * on the current host using the command "matlab".
-	 */
-	if (!(ep = engOpen(""))) {
-		fprintf(stderr, "\nCan't start MATLAB engine\n");
-		return EXIT_FAILURE;
-	}
-	
-	/*
-	 * Evaluate a function
-	 */
-	engEvalString(ep, COMMAND_DIR);	
-	engEvalString(ep, COMMAND_FUNC);
-	
-	/*
-	 * use fgetc() to make sure that we pause long enough to be
-	 * able to see the plot
-	 */
-	printf("Hit return to continue\n\n");
-	fgetc(stdin);
-		
-	engClose(ep);
-	
-	return EXIT_SUCCESS;
+
+    Engine *ep;
+
+    // Call engOpen with a NULL string. This starts a MATLAB process 
+    // on the current host using the command "matlab".	
+    if (!(ep = engOpen(""))) {
+        fprintf(stderr, "\nCan't start MATLAB engine\n");
+        return EXIT_FAILURE;
+    }
+
+    //Evaluate a function
+    engEvalString(ep, COMMAND_DIR);	
+    engEvalString(ep, COMMAND_FUNC);
+
+    engClose(ep);
+
+    return EXIT_SUCCESS;
 }

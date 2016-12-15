@@ -1,3 +1,7 @@
+/*
+ * \file misc.cpp
+ * \brief Miscellaneous functions.
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,11 +12,24 @@
 // norm(x) = sum |x_i|
 double qNorm(q_t jointsComputed, q_t jointsCurrent){
     double norm=0.0;
+
+    //Manhattan norm
     for(int j=0;j<6;j++){
         norm+= fabs(jointsComputed[j]-jointsCurrent[j]); 
     }
+
+    // Infinity norm: Leads to discontinuities for dataset 2_5
+    /*
+    std::vector<double> disp(6,0.0);
+    std::size_t j=0;
+    for (std::size_t i=0;i<6;i++){
+        disp[i] = fabs(jointsComputed[j]-jointsCurrent[j]); 
+    }
+    norm = disp[myMax(disp)];
+    */
     return norm;
 }
+
 
 std::size_t myMin(std::vector<double> v){
     std::size_t cardinal=v.size();
