@@ -1,0 +1,55 @@
+\hypertarget{testRobotIK_2testGraph_2robot_8cpp}{\section{test/test\-Robot\-I\-K/test\-Graph/robot.cpp File Reference}
+\label{testRobotIK_2testGraph_2robot_8cpp}\index{test/test\-Robot\-I\-K/test\-Graph/robot.\-cpp@{test/test\-Robot\-I\-K/test\-Graph/robot.\-cpp}}
+}
+
+
+Reads I\-Kfast joint constrained solution file and solve the shortest path in terms of joint displacement between the first and the last ee pose.  
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$cstring$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$time.\-h$>$}\\*
+{\ttfamily \#include $<$math.\-h$>$}\\*
+{\ttfamily \#include $<$map$>$}\\*
+{\ttfamily \#include $<$stack$>$}\\*
+{\ttfamily \#include \char`\"{}types.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}macros.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}misc.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Graph\-Search.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}output\-\_\-ikfast8.\-cpp\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{testRobotIK_2testGraph_2robot_8cpp_aa9b5df21ca9479bf3deaa7da9845cd6c}{\#define {\bfseries I\-K\-F\-A\-S\-T\-\_\-\-H\-A\-S\-\_\-\-L\-I\-B\-R\-A\-R\-Y}}\label{testRobotIK_2testGraph_2robot_8cpp_aa9b5df21ca9479bf3deaa7da9845cd6c}
+
+\item 
+\hypertarget{testRobotIK_2testGraph_2robot_8cpp_a2acf0f2516ebf5481d4db7f86f4d0da6}{\#define {\bfseries I\-K\-F\-A\-S\-T\-\_\-\-N\-O\-\_\-\-M\-A\-I\-N}}\label{testRobotIK_2testGraph_2robot_8cpp_a2acf0f2516ebf5481d4db7f86f4d0da6}
+
+\item 
+\hypertarget{testRobotIK_2testGraph_2robot_8cpp_aa694f07b408a2bf5d2caf76471e80b67}{\#define {\bfseries I\-K\-\_\-\-V\-E\-R\-S\-I\-O\-N}~56}\label{testRobotIK_2testGraph_2robot_8cpp_aa694f07b408a2bf5d2caf76471e80b67}
+
+\item 
+\hypertarget{testRobotIK_2testGraph_2robot_8cpp_a82eb390c5044dfcb8e1019557fe77b12}{\#define {\bfseries I\-K\-R\-E\-A\-L\-\_\-\-T\-Y\-P\-E}~Ik\-Real}\label{testRobotIK_2testGraph_2robot_8cpp_a82eb390c5044dfcb8e1019557fe77b12}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{testRobotIK_2testGraph_2robot_8cpp_af83e549169e265cc955a56c77abc4138}{float {\bfseries S\-I\-G\-N} (float x)}\label{testRobotIK_2testGraph_2robot_8cpp_af83e549169e265cc955a56c77abc4138}
+
+\item 
+\hypertarget{testRobotIK_2testGraph_2robot_8cpp_aeca47c01bf55f86c4be57949228613b9}{float {\bfseries N\-O\-R\-M} (float a, float b, float c, float d)}\label{testRobotIK_2testGraph_2robot_8cpp_aeca47c01bf55f86c4be57949228613b9}
+
+\item 
+\hypertarget{testRobotIK_2testGraph_2robot_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{int {\bfseries main} (int argc, char $\ast$$\ast$argv)}\label{testRobotIK_2testGraph_2robot_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Reads I\-Kfast joint constrained solution file and solve the shortest path in terms of joint displacement between the first and the last ee pose. 

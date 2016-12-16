@@ -1,5 +1,5 @@
 /**
- * \file robot.cpp
+ * \file testRobotIK/robot.cpp
  * \brief Computes IKfast IK on ee pose from input file, apply joint constraints and use graph search to choose the joint solutions that leads to the minimum joint displacement of the arm. 
  */
 

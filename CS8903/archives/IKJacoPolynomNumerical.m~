@@ -1,0 +1,33 @@
+%variable declaration
+
+A=[0 0.4100 0 0 0 0];
+B = [0.2102 0 -0.0120 -0.2493 -0.0846 -0.2273];
+Alpha = [90 180 90 55 55 180 ]; % in degrees
+%Alpha = Alpha*pi/180; %convert in radians FALSE !!!
+Alpha = [pi/2 pi pi/2 55*pi/180 55*pi/180 pi];
+Theta = sym('theta', [1 6]);
+
+%Kinematic model
+A1 = [A(1)*cos(Theta(1)); A(1)*sin(Theta(1));B(1)];
+A2 = [A(2)*cos(Theta(2)); A(2)*sin(Theta(2));B(2)];
+A3 = [A(3)*cos(Theta(3)); A(3)*sin(Theta(3));B(3)];
+A4 = [A(4)*cos(Theta(4)); A(4)*sin(Theta(4));B(4)];
+A5 = [A(5)*cos(Theta(5)); A(5)*sin(Theta(5));B(5)];
+A6 = [A(6)*cos(Theta(6)); A(6)*sin(Theta(6));B(6)];
+
+Q1 = [cos(Theta(1)) -cos(Alpha(1))*sin(Theta(1)) sin(Alpha(1))*sin(Theta(1)); sin(Theta(1)) cos(Alpha(1))*cos(Theta(1)) -sin(Alpha(1))*cos(Theta(1)); 0 sin(Alpha(1)) cos(Alpha(1))];
+Q2 = [cos(Theta(2)) -cos(Alpha(2))*sin(Theta(2)) sin(Alpha(2))*sin(Theta(2)); sin(Theta(2)) cos(Alpha(2))*cos(Theta(2)) -sin(Alpha(2))*cos(Theta(2)); 0 sin(Alpha(2)) cos(Alpha(2))];
+Q3 = [cos(Theta(3)) -cos(Alpha(3))*sin(Theta(3)) sin(Alpha(3))*sin(Theta(3)); sin(Theta(3)) cos(Alpha(3))*cos(Theta(3)) -sin(Alpha(3))*cos(Theta(3)); 0 sin(Alpha(3)) cos(Alpha(3))];
+Q4 = [cos(Theta(4)) -cos(Alpha(4))*sin(Theta(4)) sin(Alpha(4))*sin(Theta(4)); sin(Theta(4)) cos(Alpha(4))*cos(Theta(4)) -sin(Alpha(4))*cos(Theta(4)); 0 sin(Alpha(4)) cos(Alpha(4))];
+Q5 = [cos(Theta(5)) -cos(Alpha(5))*sin(Theta(5)) sin(Alpha(5))*sin(Theta(5)); sin(Theta(5)) cos(Alpha(5))*cos(Theta(5)) -sin(Alpha(5))*cos(Theta(5)); 0 sin(Alpha(5)) cos(Alpha(5))];
+Q6 = [cos(Theta(6)) -cos(Alpha(6))*sin(Theta(6)) sin(Alpha(6))*sin(Theta(6)); sin(Theta(6)) cos(Alpha(6))*cos(Theta(6)) -sin(Alpha(6))*cos(Theta(6)); 0 sin(Alpha(6)) cos(Alpha(6))];
+
+
+syms r1 r2 r3
+r = [r1;r2;r3];
+
+%Equation 8 --> 8-9-10
+simplify(transpose(Q1)*(r-A1))
+expand(A2 + Q2*A3 + Q2*Q3*A4 + Q2*Q3*Q4*A5)
+
+

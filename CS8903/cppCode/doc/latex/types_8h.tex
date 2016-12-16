@@ -1,0 +1,38 @@
+\hypertarget{types_8h}{\section{inc/types.h File Reference}
+\label{types_8h}\index{inc/types.\-h@{inc/types.\-h}}
+}
+
+
+Datatypes defined by Assia.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$map$>$}\\*
+{\ttfamily \#include $<$list$>$}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\-::vector$<$ double $>$ \hyperlink{types_8h_ac93021229dd8838987c783b2a6f13b92}{q\-\_\-t}
+\item 
+typedef std\-::pair$<$ int, int $>$ \hyperlink{types_8h_ae4d3c3b0026f6e579fe8b8686fc3d227}{map\-Index}
+\item 
+typedef std\-::map$<$ \hyperlink{types_8h_ae4d3c3b0026f6e579fe8b8686fc3d227}{map\-Index}, \hyperlink{types_8h_ac93021229dd8838987c783b2a6f13b92}{q\-\_\-t} $>$ \hyperlink{types_8h_a72cfbd4e488a6e150456db7a27c5d92d}{solutions\-Storage}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Datatypes defined by Assia. 
+
+\subsection{Typedef Documentation}
+\hypertarget{types_8h_ae4d3c3b0026f6e579fe8b8686fc3d227}{\index{types.\-h@{types.\-h}!map\-Index@{map\-Index}}
+\index{map\-Index@{map\-Index}!types.h@{types.\-h}}
+\subsubsection[{map\-Index}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::pair$<$int, int$>$ {\bf map\-Index}}}\label{types_8h_ae4d3c3b0026f6e579fe8b8686fc3d227}
+Matrix index. \hypertarget{types_8h_ac93021229dd8838987c783b2a6f13b92}{\index{types.\-h@{types.\-h}!q\-\_\-t@{q\-\_\-t}}
+\index{q\-\_\-t@{q\-\_\-t}!types.h@{types.\-h}}
+\subsubsection[{q\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<$double$>$ {\bf q\-\_\-t}}}\label{types_8h_ac93021229dd8838987c783b2a6f13b92}
+Joint configuration. \hypertarget{types_8h_a72cfbd4e488a6e150456db7a27c5d92d}{\index{types.\-h@{types.\-h}!solutions\-Storage@{solutions\-Storage}}
+\index{solutions\-Storage@{solutions\-Storage}!types.h@{types.\-h}}
+\subsubsection[{solutions\-Storage}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::map$<${\bf map\-Index}, {\bf q\-\_\-t}$>$ {\bf solutions\-Storage}}}\label{types_8h_a72cfbd4e488a6e150456db7a27c5d92d}
+Matrix of joint configuration. solutions\mbox{[}i\mbox{]}\mbox{[}j\mbox{]} holds the j-\/th joint solution for the i-\/th ee. 

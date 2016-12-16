@@ -1,0 +1,82 @@
+\hypertarget{classikfast_1_1IkSolutionList}{\section{ikfast\-:\-:Ik\-Solution\-List$<$ T $>$ Class Template Reference}
+\label{classikfast_1_1IkSolutionList}\index{ikfast\-::\-Ik\-Solution\-List$<$ T $>$@{ikfast\-::\-Ik\-Solution\-List$<$ T $>$}}
+}
+
+
+Default implementation of \hyperlink{classikfast_1_1IkSolutionListBase}{Ik\-Solution\-List\-Base}.  
+
+
+
+
+{\ttfamily \#include $<$ikfast.\-h$>$}
+
+Inheritance diagram for ikfast\-:\-:Ik\-Solution\-List$<$ T $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classikfast_1_1IkSolutionList}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual size\-\_\-t \hyperlink{classikfast_1_1IkSolutionList_ac0a503b13e68403e7b2d92afd4c28a7b}{Add\-Solution} (const std\-::vector$<$ \hyperlink{classikfast_1_1IkSingleDOFSolutionBase}{Ik\-Single\-D\-O\-F\-Solution\-Base}$<$ T $>$ $>$ \&vinfos, const std\-::vector$<$ int $>$ \&vfree)
+\begin{DoxyCompactList}\small\item\em add one solution and return its index for later retrieval \end{DoxyCompactList}\item 
+\hypertarget{classikfast_1_1IkSolutionList_ab2840cca4cea5547d684907047d38bba}{virtual const \hyperlink{classikfast_1_1IkSolutionBase}{Ik\-Solution\-Base}$<$ T $>$ \& \hyperlink{classikfast_1_1IkSolutionList_ab2840cca4cea5547d684907047d38bba}{Get\-Solution} (size\-\_\-t index) const }\label{classikfast_1_1IkSolutionList_ab2840cca4cea5547d684907047d38bba}
+
+\begin{DoxyCompactList}\small\item\em returns the solution pointer \end{DoxyCompactList}\item 
+\hypertarget{classikfast_1_1IkSolutionList_a4508235ea7738ee067d6525a34362567}{virtual size\-\_\-t \hyperlink{classikfast_1_1IkSolutionList_a4508235ea7738ee067d6525a34362567}{Get\-Num\-Solutions} () const }\label{classikfast_1_1IkSolutionList_a4508235ea7738ee067d6525a34362567}
+
+\begin{DoxyCompactList}\small\item\em returns the number of solutions stored \end{DoxyCompactList}\item 
+\hypertarget{classikfast_1_1IkSolutionList_ae341a33d5aee644cac867e3edd2a9916}{virtual void \hyperlink{classikfast_1_1IkSolutionList_ae341a33d5aee644cac867e3edd2a9916}{Clear} ()}\label{classikfast_1_1IkSolutionList_ae341a33d5aee644cac867e3edd2a9916}
+
+\begin{DoxyCompactList}\small\item\em clears all current solutions, note that any memory addresses returned from \hyperlink{classikfast_1_1IkSolutionList_ab2840cca4cea5547d684907047d38bba}{Get\-Solution} will be invalidated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classikfast_1_1IkSolutionList_acaba262a6f62eee0620b6f190dbbe185}{std\-::list$<$ \hyperlink{classikfast_1_1IkSolution}{Ik\-Solution}$<$ T $>$ $>$ {\bfseries \-\_\-listsolutions}}\label{classikfast_1_1IkSolutionList_acaba262a6f62eee0620b6f190dbbe185}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class ikfast\-::\-Ik\-Solution\-List$<$ T $>$}
+
+Default implementation of \hyperlink{classikfast_1_1IkSolutionListBase}{Ik\-Solution\-List\-Base}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classikfast_1_1IkSolutionList_ac0a503b13e68403e7b2d92afd4c28a7b}{\index{ikfast\-::\-Ik\-Solution\-List@{ikfast\-::\-Ik\-Solution\-List}!Add\-Solution@{Add\-Solution}}
+\index{Add\-Solution@{Add\-Solution}!ikfast::IkSolutionList@{ikfast\-::\-Ik\-Solution\-List}}
+\subsubsection[{Add\-Solution}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ virtual size\-\_\-t {\bf ikfast\-::\-Ik\-Solution\-List}$<$ T $>$\-::Add\-Solution (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ {\bf Ik\-Single\-D\-O\-F\-Solution\-Base}$<$ T $>$ $>$ \&}]{vinfos, }
+\item[{const std\-::vector$<$ int $>$ \&}]{vfree}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classikfast_1_1IkSolutionList_ac0a503b13e68403e7b2d92afd4c28a7b}
+
+
+add one solution and return its index for later retrieval 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vinfos} & Solution data for each degree of freedom of the manipulator \\
+\hline
+{\em vfree} & If the solution represents an infinite space, holds free parameters of the solution that users can freely set. The indices are of the configuration that the I\-K solver accepts rather than the entire robot, ie 0 points to the first value accepted. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classikfast_1_1IkSolutionListBase_a9d862f550472c2fa15189946b12222bf}{ikfast\-::\-Ik\-Solution\-List\-Base$<$ T $>$}.
+
+
+\begin{DoxyCode}
+243     \{
+244         \textcolor{keywordtype}{size\_t} index = \_listsolutions.size();
+245         \_listsolutions.push\_back(IkSolution<T>(vinfos,vfree));
+246         \textcolor{keywordflow}{return} index;
+247     \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{ikfast_8h}{ikfast.\-h}\end{DoxyCompactItemize}

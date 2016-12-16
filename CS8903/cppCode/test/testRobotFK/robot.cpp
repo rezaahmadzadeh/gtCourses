@@ -1,5 +1,6 @@
 /**
- * \file robot.cpp
+ * \file testRobotFK/robot.cpp
+ *
  * \brief Run IKfast FK on joints in input file and save the result to file.
  */
 

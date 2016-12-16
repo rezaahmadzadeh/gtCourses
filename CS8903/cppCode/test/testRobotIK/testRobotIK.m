@@ -5,12 +5,12 @@ addpath(genpath('/home/abenbihi/matlab/rvctools'));
 ROOT_DIR = '/home/abenbihi/gtCourses/CS8903/';
 
 % Specify recorded dataset 
-rawSourceData = 1; %0:false, 1:true
-numSet = '2_5';
+rawSourceData = 0; %0:false, 1:true
+numSet = '1_4p';
 
 % Specify tests to run, set to 1 to run the test
-testEE=0; %Plot the recorded and computed ee cartesian trajectories
-testQ=0; % Plot the computed joint trajectories
+testEE=1; %Plot the recorded and computed ee cartesian trajectories
+testQ=1; % Plot the computed joint trajectories
 compareWithMatlabModel=1; % Plot the ee cartesian trajectories of matlab fk on computed joint trajectories 
 testError=1; % Plot the cartesian position errors on the x,y and z axis (between recorded data and ikfast fk on ikfast ik result)
 testSimulation=0; % Plot jaco2 motion based on the robotic toolbox model
@@ -19,9 +19,8 @@ testSimulation=0; % Plot jaco2 motion based on the robotic toolbox model
 testAll=0; %all raw sollutions found by ikfast
 testJointConstraints=0; % all constrained solutions found by ikfast
 testNN=0; % path planning with nearest neighbor strategy
-testGraph=1; % path planning with graph strategy
-testCut=0; %
-testCombined=0; % executable solution after joint constrain and graph path planning
+testGraph=0; % path planning with graph strategy
+testCombined=1; % executable solution after joint constrain and graph path planning
 
 if rawSourceData==0 %x,y,z, eulerX, eulerY, eulerZ
     robotFilename = strcat(ROOT_DIR, 'data/processedData/dataset', numSet, '.txt');

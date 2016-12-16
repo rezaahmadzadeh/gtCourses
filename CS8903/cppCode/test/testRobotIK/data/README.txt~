@@ -1,0 +1,5 @@
+V3.1 Check joint limits then take the nearest.
+
+V3.2 Take the nearest then check joint limits.
+
+V3.3 Build graph

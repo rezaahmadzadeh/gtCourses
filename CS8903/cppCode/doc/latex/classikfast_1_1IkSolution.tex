@@ -1,0 +1,129 @@
+\hypertarget{classikfast_1_1IkSolution}{\section{ikfast\-:\-:Ik\-Solution$<$ T $>$ Class Template Reference}
+\label{classikfast_1_1IkSolution}\index{ikfast\-::\-Ik\-Solution$<$ T $>$@{ikfast\-::\-Ik\-Solution$<$ T $>$}}
+}
+
+
+Default implementation of \hyperlink{classikfast_1_1IkSolutionBase}{Ik\-Solution\-Base}.  
+
+
+
+
+{\ttfamily \#include $<$ikfast.\-h$>$}
+
+Inheritance diagram for ikfast\-:\-:Ik\-Solution$<$ T $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classikfast_1_1IkSolution}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classikfast_1_1IkSolution_a6b76af506a24ba4b78b1c9d3dc110a72}{{\bfseries Ik\-Solution} (const std\-::vector$<$ \hyperlink{classikfast_1_1IkSingleDOFSolutionBase}{Ik\-Single\-D\-O\-F\-Solution\-Base}$<$ T $>$ $>$ \&vinfos, const std\-::vector$<$ int $>$ \&vfree)}\label{classikfast_1_1IkSolution_a6b76af506a24ba4b78b1c9d3dc110a72}
+
+\item 
+virtual void \hyperlink{classikfast_1_1IkSolution_a197868105dffb498bec69c38318283a2}{Get\-Solution} (T $\ast$solution, const T $\ast$freevalues) const 
+\begin{DoxyCompactList}\small\item\em gets a concrete solution \end{DoxyCompactList}\item 
+\hypertarget{classikfast_1_1IkSolution_a56a7305f2111808478f85a43ecc5e6aa}{virtual void \hyperlink{classikfast_1_1IkSolution_a56a7305f2111808478f85a43ecc5e6aa}{Get\-Solution} (std\-::vector$<$ T $>$ \&solution, const std\-::vector$<$ T $>$ \&freevalues) const }\label{classikfast_1_1IkSolution_a56a7305f2111808478f85a43ecc5e6aa}
+
+\begin{DoxyCompactList}\small\item\em std\-::vector version of \hyperlink{classikfast_1_1IkSolution_a197868105dffb498bec69c38318283a2}{Get\-Solution} \end{DoxyCompactList}\item 
+virtual const std\-::vector$<$ int $>$ \& \hyperlink{classikfast_1_1IkSolution_a31267c02ff31436b0bfe3672bcecce5e}{Get\-Free} () const 
+\begin{DoxyCompactList}\small\item\em Gets the indices of the configuration space that have to be preset before a full solution can be returned. \end{DoxyCompactList}\item 
+\hypertarget{classikfast_1_1IkSolution_a8d46fe7ed5a582f9ad3f4bfc86b41297}{virtual const int \hyperlink{classikfast_1_1IkSolution_a8d46fe7ed5a582f9ad3f4bfc86b41297}{Get\-D\-O\-F} () const }\label{classikfast_1_1IkSolution_a8d46fe7ed5a582f9ad3f4bfc86b41297}
+
+\begin{DoxyCompactList}\small\item\em the dof of the solution \end{DoxyCompactList}\item 
+\hypertarget{classikfast_1_1IkSolution_ad61847499fe76751629f70047f8b0a69}{virtual void {\bfseries Validate} () const }\label{classikfast_1_1IkSolution_ad61847499fe76751629f70047f8b0a69}
+
+\item 
+\hypertarget{classikfast_1_1IkSolution_ae6b77cab94b40369712a099cc21d42e8}{virtual void {\bfseries Get\-Solution\-Indices} (std\-::vector$<$ unsigned int $>$ \&v) const }\label{classikfast_1_1IkSolution_ae6b77cab94b40369712a099cc21d42e8}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classikfast_1_1IkSolution_ac1b4c9612cee58a2b98388454b1054d7}{std\-::vector\\*
+$<$ \hyperlink{classikfast_1_1IkSingleDOFSolutionBase}{Ik\-Single\-D\-O\-F\-Solution\-Base}$<$ T $>$ $>$ \hyperlink{classikfast_1_1IkSolution_ac1b4c9612cee58a2b98388454b1054d7}{\-\_\-vbasesol}}\label{classikfast_1_1IkSolution_ac1b4c9612cee58a2b98388454b1054d7}
+
+\begin{DoxyCompactList}\small\item\em solution and their offsets if joints are mimiced \end{DoxyCompactList}\item 
+\hypertarget{classikfast_1_1IkSolution_a3c552543a66e39e127bed5a5c085b1bb}{std\-::vector$<$ int $>$ {\bfseries \-\_\-vfree}}\label{classikfast_1_1IkSolution_a3c552543a66e39e127bed5a5c085b1bb}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class ikfast\-::\-Ik\-Solution$<$ T $>$}
+
+Default implementation of \hyperlink{classikfast_1_1IkSolutionBase}{Ik\-Solution\-Base}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classikfast_1_1IkSolution_a31267c02ff31436b0bfe3672bcecce5e}{\index{ikfast\-::\-Ik\-Solution@{ikfast\-::\-Ik\-Solution}!Get\-Free@{Get\-Free}}
+\index{Get\-Free@{Get\-Free}!ikfast::IkSolution@{ikfast\-::\-Ik\-Solution}}
+\subsubsection[{Get\-Free}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ virtual const std\-::vector$<$int$>$\& {\bf ikfast\-::\-Ik\-Solution}$<$ T $>$\-::Get\-Free (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classikfast_1_1IkSolution_a31267c02ff31436b0bfe3672bcecce5e}
+
+
+Gets the indices of the configuration space that have to be preset before a full solution can be returned. 
+
+0 always points to the first value accepted by the ik function. \begin{DoxyReturn}{Returns}
+vector of indices indicating the free parameters 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classikfast_1_1IkSolutionBase_a2693ede66be937b7c4c1c949284282ca}{ikfast\-::\-Ik\-Solution\-Base$<$ T $>$}.
+
+
+\begin{DoxyCode}
+184                                                   \{
+185         \textcolor{keywordflow}{return} \_vfree;
+186     \}
+\end{DoxyCode}
+\hypertarget{classikfast_1_1IkSolution_a197868105dffb498bec69c38318283a2}{\index{ikfast\-::\-Ik\-Solution@{ikfast\-::\-Ik\-Solution}!Get\-Solution@{Get\-Solution}}
+\index{Get\-Solution@{Get\-Solution}!ikfast::IkSolution@{ikfast\-::\-Ik\-Solution}}
+\subsubsection[{Get\-Solution}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ virtual void {\bf ikfast\-::\-Ik\-Solution}$<$ T $>$\-::Get\-Solution (
+\begin{DoxyParamCaption}
+\item[{T $\ast$}]{solution, }
+\item[{const T $\ast$}]{freevalues}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classikfast_1_1IkSolution_a197868105dffb498bec69c38318283a2}
+
+
+gets a concrete solution 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em solution} & the result \\
+\hline
+\mbox{\tt in}  & {\em freevalues} & values for the free parameters  Get\-Free \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classikfast_1_1IkSolutionBase_a9405530feb49f12f56c3175e7150c66f}{ikfast\-::\-Ik\-Solution\-Base$<$ T $>$}.
+
+
+\begin{DoxyCode}
+163                                                                      \{
+164         \textcolor{keywordflow}{for}(std::size\_t i = 0; i < \hyperlink{classikfast_1_1IkSolution_ac1b4c9612cee58a2b98388454b1054d7}{\_vbasesol}.size(); ++i) \{
+165             \textcolor{keywordflow}{if}( \hyperlink{classikfast_1_1IkSolution_ac1b4c9612cee58a2b98388454b1054d7}{\_vbasesol}[i].freeind < 0 )
+166                 solution[i] = \hyperlink{classikfast_1_1IkSolution_ac1b4c9612cee58a2b98388454b1054d7}{\_vbasesol}[i].foffset;
+167             \textcolor{keywordflow}{else} \{
+168                 solution[i] = freevalues[\hyperlink{classikfast_1_1IkSolution_ac1b4c9612cee58a2b98388454b1054d7}{\_vbasesol}[i].freeind]*
+      \hyperlink{classikfast_1_1IkSolution_ac1b4c9612cee58a2b98388454b1054d7}{\_vbasesol}[i].fmul + \hyperlink{classikfast_1_1IkSolution_ac1b4c9612cee58a2b98388454b1054d7}{\_vbasesol}[i].foffset;
+169                 \textcolor{keywordflow}{if}( solution[i] > T(3.14159265358979) ) \{
+170                     solution[i] -= T(6.28318530717959);
+171                 \}
+172                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}( solution[i] < T(-3.14159265358979) ) \{
+173                     solution[i] += T(6.28318530717959);
+174                 \}
+175             \}
+176         \}
+177     \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{ikfast_8h}{ikfast.\-h}\end{DoxyCompactItemize}

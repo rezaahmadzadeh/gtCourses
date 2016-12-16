@@ -1,0 +1,87 @@
+\hypertarget{classikfast_1_1IkSolutionBase}{\section{ikfast\-:\-:Ik\-Solution\-Base$<$ T $>$ Class Template Reference}
+\label{classikfast_1_1IkSolutionBase}\index{ikfast\-::\-Ik\-Solution\-Base$<$ T $>$@{ikfast\-::\-Ik\-Solution\-Base$<$ T $>$}}
+}
+
+
+The discrete solutions are returned in this structure.  
+
+
+
+
+{\ttfamily \#include $<$ikfast.\-h$>$}
+
+Inheritance diagram for ikfast\-:\-:Ik\-Solution\-Base$<$ T $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classikfast_1_1IkSolutionBase}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classikfast_1_1IkSolutionBase_a9405530feb49f12f56c3175e7150c66f}{Get\-Solution} (T $\ast$solution, const T $\ast$freevalues) const =0
+\begin{DoxyCompactList}\small\item\em gets a concrete solution \end{DoxyCompactList}\item 
+\hypertarget{classikfast_1_1IkSolutionBase_a2b558f7a29be0868cff3e81fbd9594c4}{virtual void \hyperlink{classikfast_1_1IkSolutionBase_a2b558f7a29be0868cff3e81fbd9594c4}{Get\-Solution} (std\-::vector$<$ T $>$ \&solution, const std\-::vector$<$ T $>$ \&freevalues) const }\label{classikfast_1_1IkSolutionBase_a2b558f7a29be0868cff3e81fbd9594c4}
+
+\begin{DoxyCompactList}\small\item\em std\-::vector version of \hyperlink{classikfast_1_1IkSolutionBase_a9405530feb49f12f56c3175e7150c66f}{Get\-Solution} \end{DoxyCompactList}\item 
+virtual const std\-::vector$<$ int $>$ \& \hyperlink{classikfast_1_1IkSolutionBase_a2693ede66be937b7c4c1c949284282ca}{Get\-Free} () const =0
+\begin{DoxyCompactList}\small\item\em Gets the indices of the configuration space that have to be preset before a full solution can be returned. \end{DoxyCompactList}\item 
+\hypertarget{classikfast_1_1IkSolutionBase_aac54f54aa69b27991651b0ba2a21208c}{virtual const int \hyperlink{classikfast_1_1IkSolutionBase_aac54f54aa69b27991651b0ba2a21208c}{Get\-D\-O\-F} () const =0}\label{classikfast_1_1IkSolutionBase_aac54f54aa69b27991651b0ba2a21208c}
+
+\begin{DoxyCompactList}\small\item\em the dof of the solution \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class ikfast\-::\-Ik\-Solution\-Base$<$ T $>$}
+
+The discrete solutions are returned in this structure. 
+
+Sometimes the joint axes of the robot can align allowing an infinite number of solutions. Stores all these solutions in the form of free variables that the user has to set when querying the solution. Its prototype is\-: 
+
+\subsection{Member Function Documentation}
+\hypertarget{classikfast_1_1IkSolutionBase_a2693ede66be937b7c4c1c949284282ca}{\index{ikfast\-::\-Ik\-Solution\-Base@{ikfast\-::\-Ik\-Solution\-Base}!Get\-Free@{Get\-Free}}
+\index{Get\-Free@{Get\-Free}!ikfast::IkSolutionBase@{ikfast\-::\-Ik\-Solution\-Base}}
+\subsubsection[{Get\-Free}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ virtual const std\-::vector$<$int$>$\& {\bf ikfast\-::\-Ik\-Solution\-Base}$<$ T $>$\-::Get\-Free (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classikfast_1_1IkSolutionBase_a2693ede66be937b7c4c1c949284282ca}
+
+
+Gets the indices of the configuration space that have to be preset before a full solution can be returned. 
+
+0 always points to the first value accepted by the ik function. \begin{DoxyReturn}{Returns}
+vector of indices indicating the free parameters 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classikfast_1_1IkSolution_a31267c02ff31436b0bfe3672bcecce5e}{ikfast\-::\-Ik\-Solution$<$ T $>$}.
+
+\hypertarget{classikfast_1_1IkSolutionBase_a9405530feb49f12f56c3175e7150c66f}{\index{ikfast\-::\-Ik\-Solution\-Base@{ikfast\-::\-Ik\-Solution\-Base}!Get\-Solution@{Get\-Solution}}
+\index{Get\-Solution@{Get\-Solution}!ikfast::IkSolutionBase@{ikfast\-::\-Ik\-Solution\-Base}}
+\subsubsection[{Get\-Solution}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ virtual void {\bf ikfast\-::\-Ik\-Solution\-Base}$<$ T $>$\-::Get\-Solution (
+\begin{DoxyParamCaption}
+\item[{T $\ast$}]{solution, }
+\item[{const T $\ast$}]{freevalues}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classikfast_1_1IkSolutionBase_a9405530feb49f12f56c3175e7150c66f}
+
+
+gets a concrete solution 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em solution} & the result \\
+\hline
+\mbox{\tt in}  & {\em freevalues} & values for the free parameters  Get\-Free \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classikfast_1_1IkSolution_a197868105dffb498bec69c38318283a2}{ikfast\-::\-Ik\-Solution$<$ T $>$}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{ikfast_8h}{ikfast.\-h}\end{DoxyCompactItemize}

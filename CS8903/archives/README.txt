@@ -1,0 +1,45 @@
+Version description
+
+V0: 
+	Model: 11 months old URDF model. The github model was not synhcronized to the one used by the lab.
+	IKfast parameters: --baselink=1 --eelink=7
+	
+V1: 
+	Model: Model currently used by the lab after new push to the repo.
+	IKfast parameters: --baselink=1 --eelink=7
+	
+V1.1: 
+	Model: Model currently used by the lab after new push to the repo. With base shift.
+	IKfast parameters: --baselink=1 --eelink=7
+
+V2.1: 
+	Model: Model currently used by the lab after new push to the repo.
+	IKfast parameters: --baselink=1 --eelink=8
+
+V2.2: 
+	Model: Model currently used by the lab after new push to the repo.
+	IKfast parameters: --baselink=1 --eelink=9
+
+V3.1: 
+	Model: Model currently used by the lab after new push to the repo. Gripper removed from the model.
+	IKfast parameters: --baselink=1 --eelink=8
+
+V3.2: 
+	Model: Model currently used by the lab after new push to the repo. Gripper removed from the model. eelink z coordinate set to 0.54934664 
+	IKfast parameters: --baselink=1 --eelink=8
+	
+V3.3: 
+	Model: Model currently used by the lab after new push to the repo. Gripper removed from the model. eelink z coordinate set to 0.09380704156 
+	IKfast parameters: --baselink=1 --eelink=8
+
+V3.4: 
+	Model: Model currently used by the lab after new push to the repo. Gripper removed from the model. eelink z coordinate set to 0.22 
+	IKfast parameters: --baselink=1 --eelink=8
+
+V3.5: 
+	Model: Model currently used by the lab after new push to the repo. Gripper removed from the model. eelink z coordinate set to 0.2372
+	IKfast parameters: --baselink=1 --eelink=8
+	
+** Current Version **
+	Model: Model currently used by the lab after new push to the repo. Gripper removed from the model. eelink z coordinate set to 0.2028
+	IKfast parameters: --baselink=1 --eelink=8

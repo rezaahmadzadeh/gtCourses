@@ -1,0 +1,16 @@
+MATLABROOT := /usr/local/MATLAB/R2016a/
+SRC:= processing.cpp
+OBJ:= $(patsubst %.cpp,%.o, $(SRC))
+CXX:= g++
+CXXFLAGS:= -I$(MATLABROOT)extern/include
+LDLIBS:= -L$(MATLABROOT)extern/lib -L$(MATLABROOT)bin/glnxa64 -leng -lmx
+
+.PHONY: clean
+
+all: processing
+
+processing:
+	$(CXX) $(SRC) -o processing $(CXXFLAGS) $(LDLIBS) 
+
+clean:
+	$(RM) processing *.~ *.o

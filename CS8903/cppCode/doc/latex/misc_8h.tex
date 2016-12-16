@@ -1,0 +1,159 @@
+\hypertarget{misc_8h}{\section{src/misc/misc.h File Reference}
+\label{misc_8h}\index{src/misc/misc.\-h@{src/misc/misc.\-h}}
+}
+
+
+Miscellaneous functions.  
+
+
+{\ttfamily \#include \char`\"{}types.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{misc_8h_affaddad50a1a843ccde93ea5424ce575}{q\-Norm} (\hyperlink{types_8h_ac93021229dd8838987c783b2a6f13b92}{q\-\_\-t} joints\-Computed, \hyperlink{types_8h_ac93021229dd8838987c783b2a6f13b92}{q\-\_\-t} joints\-Current)
+\begin{DoxyCompactList}\small\item\em Compute manhattan norm between two joint vectors. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{misc_8h_a531c23bbcd324ea8ccf45f78fe3299ec}{my\-Min} (std\-::vector$<$ double $>$ v)
+\begin{DoxyCompactList}\small\item\em Returns the index of the minimum value of the vector. \end{DoxyCompactList}\item 
+std\-::size\-\_\-t \hyperlink{misc_8h_a8a44b1961daf53a8bb6ef2e16a980361}{my\-Max} (std\-::vector$<$ double $>$ v)
+\begin{DoxyCompactList}\small\item\em Returns the index of the maximum value of the vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Miscellaneous functions. 
+
+\subsection{Function Documentation}
+\hypertarget{misc_8h_a8a44b1961daf53a8bb6ef2e16a980361}{\index{misc.\-h@{misc.\-h}!my\-Max@{my\-Max}}
+\index{my\-Max@{my\-Max}!misc.h@{misc.\-h}}
+\subsubsection[{my\-Max}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t my\-Max (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ double $>$}]{v}
+\end{DoxyParamCaption}
+)}}\label{misc_8h_a8a44b1961daf53a8bb6ef2e16a980361}
+
+
+Returns the index of the maximum value of the vector. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em v} & \\
+\hline
+\mbox{\tt out}  & {\em index} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+58                                     \{
+59     std::size\_t cardinal=v.size();
+60     std::size\_t maxIdx=0;
+61     \textcolor{keywordtype}{double} maxValue=0;
+62     \textcolor{keywordflow}{if}(\hyperlink{macros_8h_ad72dbcf6d0153db1b8d8a58001feed83}{DEBUG})\{
+63         \textcolor{keywordflow}{for}(std::size\_t i=0;i<cardinal;i++)\{
+64             std::cout << v[i] << \textcolor{stringliteral}{"  "} << std::endl;
+65         \}
+66     \}
+67     \textcolor{keywordflow}{if}(cardinal>1)\{
+68         maxValue = v[0];
+69         \textcolor{keywordflow}{for} (std::size\_t i=0;i<cardinal;i++)\{
+70             \textcolor{keywordflow}{if}(v[i]>maxValue)\{
+71                 maxValue = v[i];
+72                 maxIdx=i;
+73             \}
+74         \}
+75     \}
+76     \textcolor{keywordflow}{if}(\hyperlink{macros_8h_ad72dbcf6d0153db1b8d8a58001feed83}{DEBUG})\{
+77         std::cout << \textcolor{stringliteral}{"Max found at index "} << maxIdx << \textcolor{stringliteral}{"="} << maxValue << std::endl;
+78     \}
+79     \textcolor{keywordflow}{return} maxIdx;
+80 \}
+\end{DoxyCode}
+\hypertarget{misc_8h_a531c23bbcd324ea8ccf45f78fe3299ec}{\index{misc.\-h@{misc.\-h}!my\-Min@{my\-Min}}
+\index{my\-Min@{my\-Min}!misc.h@{misc.\-h}}
+\subsubsection[{my\-Min}]{\setlength{\rightskip}{0pt plus 5cm}std\-::size\-\_\-t my\-Min (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ double $>$}]{v}
+\end{DoxyParamCaption}
+)}}\label{misc_8h_a531c23bbcd324ea8ccf45f78fe3299ec}
+
+
+Returns the index of the minimum value of the vector. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em v} & \\
+\hline
+\mbox{\tt out}  & {\em index} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+34                                     \{
+35     std::size\_t cardinal=v.size();
+36     std::size\_t minIdx=0;
+37     \textcolor{keywordtype}{double} minValue=0;
+38     \textcolor{keywordflow}{if}(\hyperlink{macros_8h_ad72dbcf6d0153db1b8d8a58001feed83}{DEBUG})\{
+39         \textcolor{keywordflow}{for}(std::size\_t i=0;i<cardinal;i++)\{
+40             std::cout << v[i] << \textcolor{stringliteral}{"  "} << std::endl;
+41         \}
+42     \}
+43     \textcolor{keywordflow}{if}(cardinal>1)\{
+44         minValue = v[0];
+45         \textcolor{keywordflow}{for} (std::size\_t i=0;i<cardinal;i++)\{
+46             \textcolor{keywordflow}{if}(v[i]<minValue)\{
+47                 minValue = v[i];
+48                 minIdx=i;
+49             \}
+50         \}
+51     \}
+52     \textcolor{keywordflow}{if}(\hyperlink{macros_8h_ad72dbcf6d0153db1b8d8a58001feed83}{DEBUG})\{
+53         std::cout << \textcolor{stringliteral}{"Min found at index "} << minIdx << \textcolor{stringliteral}{"="} << minValue << std::endl;
+54     \}
+55     \textcolor{keywordflow}{return} minIdx;
+56 \}
+\end{DoxyCode}
+\hypertarget{misc_8h_affaddad50a1a843ccde93ea5424ce575}{\index{misc.\-h@{misc.\-h}!q\-Norm@{q\-Norm}}
+\index{q\-Norm@{q\-Norm}!misc.h@{misc.\-h}}
+\subsubsection[{q\-Norm}]{\setlength{\rightskip}{0pt plus 5cm}double q\-Norm (
+\begin{DoxyParamCaption}
+\item[{{\bf q\-\_\-t}}]{joints\-Computed, }
+\item[{{\bf q\-\_\-t}}]{joints\-Current}
+\end{DoxyParamCaption}
+)}}\label{misc_8h_affaddad50a1a843ccde93ea5424ce575}
+
+
+Compute manhattan norm between two joint vectors. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em joints\-Computed} & \\
+\hline
+\mbox{\tt in}  & {\em joints\-Current} & \\
+\hline
+\mbox{\tt out}  & {\em norm} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+13                                                    \{
+14     \textcolor{keywordtype}{double} norm=0.0;
+15 
+16     \textcolor{comment}{//Manhattan norm}
+17     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0;j<6;j++)\{
+18         norm+= fabs(jointsComputed[j]-jointsCurrent[j]); 
+19     \}
+20 
+21     \textcolor{comment}{// Infinity norm: Leads to discontinuities for dataset 2\_5}
+22     \textcolor{comment}{/*}
+23 \textcolor{comment}{    std::vector<double> disp(6,0.0);}
+24 \textcolor{comment}{    std::size\_t j=0;}
+25 \textcolor{comment}{    for (std::size\_t i=0;i<6;i++)\{}
+26 \textcolor{comment}{        disp[i] = fabs(jointsComputed[j]-jointsCurrent[j]); }
+27 \textcolor{comment}{    \}}
+28 \textcolor{comment}{    norm = disp[myMax(disp)];}
+29 \textcolor{comment}{    */}
+30     \textcolor{keywordflow}{return} norm;
+31 \}
+\end{DoxyCode}

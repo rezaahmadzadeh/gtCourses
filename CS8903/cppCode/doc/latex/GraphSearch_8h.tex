@@ -1,0 +1,47 @@
+\hypertarget{GraphSearch_8h}{\section{src/graph\-Search/\-Graph\-Search.h File Reference}
+\label{GraphSearch_8h}\index{src/graph\-Search/\-Graph\-Search.\-h@{src/graph\-Search/\-Graph\-Search.\-h}}
+}
+
+
+\hyperlink{classGraph}{Graph} structure and Dijkstra search.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include \char`\"{}types.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$list$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classGraph}{Graph}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int \hyperlink{GraphSearch_8h_ac4ad596873793f04ffb3f20a24d93e0f}{Vertex}
+\item 
+typedef float \hyperlink{GraphSearch_8h_ad8909b856fa70c7731c787994276fb03}{Weight}
+\item 
+typedef std\-::list$<$ std\-::pair\\*
+$<$ \hyperlink{GraphSearch_8h_ac4ad596873793f04ffb3f20a24d93e0f}{Vertex}, \hyperlink{GraphSearch_8h_ad8909b856fa70c7731c787994276fb03}{Weight} $>$ $>$ \hyperlink{GraphSearch_8h_a12a5d649052ffa035f6ec47b6589b871}{Adj\-List}
+\item 
+\hypertarget{GraphSearch_8h_ad800c60d6649f25b38918c43be0db91f}{typedef std\-::pair$<$ \hyperlink{GraphSearch_8h_ad8909b856fa70c7731c787994276fb03}{Weight}, \hyperlink{GraphSearch_8h_ac4ad596873793f04ffb3f20a24d93e0f}{Vertex} $>$ {\bfseries Inverted\-Node}}\label{GraphSearch_8h_ad800c60d6649f25b38918c43be0db91f}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classGraph}{Graph} structure and Dijkstra search. 
+
+\subsection{Typedef Documentation}
+\hypertarget{GraphSearch_8h_a12a5d649052ffa035f6ec47b6589b871}{\index{Graph\-Search.\-h@{Graph\-Search.\-h}!Adj\-List@{Adj\-List}}
+\index{Adj\-List@{Adj\-List}!GraphSearch.h@{Graph\-Search.\-h}}
+\subsubsection[{Adj\-List}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::list$<$ std\-::pair$<${\bf Vertex},{\bf Weight}$>$ $>$ {\bf Adj\-List}}}\label{GraphSearch_8h_a12a5d649052ffa035f6ec47b6589b871}
+Adjacence list reprensentation\-: adj\-List\mbox{[}i\mbox{]} = \{(j,weight(i,j)\} with j neighbor of i. \hypertarget{GraphSearch_8h_ac4ad596873793f04ffb3f20a24d93e0f}{\index{Graph\-Search.\-h@{Graph\-Search.\-h}!Vertex@{Vertex}}
+\index{Vertex@{Vertex}!GraphSearch.h@{Graph\-Search.\-h}}
+\subsubsection[{Vertex}]{\setlength{\rightskip}{0pt plus 5cm}typedef int {\bf Vertex}}}\label{GraphSearch_8h_ac4ad596873793f04ffb3f20a24d93e0f}
+Index of the joint in the array storing all solutions. \hypertarget{GraphSearch_8h_ad8909b856fa70c7731c787994276fb03}{\index{Graph\-Search.\-h@{Graph\-Search.\-h}!Weight@{Weight}}
+\index{Weight@{Weight}!GraphSearch.h@{Graph\-Search.\-h}}
+\subsubsection[{Weight}]{\setlength{\rightskip}{0pt plus 5cm}typedef float {\bf Weight}}}\label{GraphSearch_8h_ad8909b856fa70c7731c787994276fb03}
+q\-\_\-norm norm between two joints. 
